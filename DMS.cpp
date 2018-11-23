@@ -36,7 +36,7 @@ int main()
       if(row<8)
       row++;
     }
-    if(queens<8)
+    if(queens<8 && row<8 && col<8)
     {
       outer();
       queen();
@@ -56,16 +56,16 @@ int main()
 //    {if(my_array[x][y]==1)
 //    return 0;}
     for(x=col,y=row;x>=0;x--)
-    {if(my_array[x][y]==1)
+    {if(my_array[y][x]==1)
     return 0;}
 //    for(x=col,y=row;x<8 && y<8;x++,y++)
 //    {if(my_array[x][y]==1)
 //    return 0;}
     for(x=col,y=row;x>=0 && y>=0;x--,y--)
-    {if(my_array[x][y]==1)
+    {if(my_array[y][x]==1)
     return 0;}
-    for(x=col,y=row;x<8 && y>=0;x++,y--)
-    {if(my_array[x][y]==1)
+    for(x=col,y=row;x>=0 && y<8;x--,y++)
+    {if(my_array[y][x]==1)
     return 0;}
 //    for(x=col,y=row;x>=0 && y<8;x--,y++)
 //    {if(my_array[x][y]==1)
@@ -78,11 +78,13 @@ int main()
   void nuller(){
     col--;
     int x=col;
+    cout<<"\n Coll in nuller"<<x<<endl;
     for(int y=0;y<8;y++)
     {
-      if(my_array[x][y]==1)
+      if(my_array[y][x]==1)
       {
-        my_array[x][y]=0;
+        cout<<"row ="<<y<<" col= "<<x;
+        my_array[y][x]=0;
         row=y+1;queens--;
         break;
       }
